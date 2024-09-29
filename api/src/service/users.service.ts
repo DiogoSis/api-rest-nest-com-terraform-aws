@@ -9,6 +9,14 @@ interface CreateUserParams {
   password: string;
 }
 
+interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 //valor aleatório adicionado à senha antes do hashing para proteger
 const SALT_ROUNDS = 10;
 
@@ -32,7 +40,22 @@ export class UsersService {
     });
 
     await this.usersRepository.createUser(user);
-
     return user.id;
+  }
+
+  public async getUserByID(userID: string): Promise<IUser> {
+    const user = await this.usersRepository.getUserByID(userID);
+
+    if (!user) {
+      throw new BadRequestException('Usuario não encontrado');
+    }
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    };
   }
 }

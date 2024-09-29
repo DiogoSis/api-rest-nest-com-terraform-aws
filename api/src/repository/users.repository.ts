@@ -12,4 +12,8 @@ export class UsersRepository {
   public async getUserByEmail(email: string): Promise<User | undefined> {
     return this.users.find((user) => user.email === email);
   }
+
+  public async getUserByID(userID: string): Promise<User | undefined> {
+    return this.users.find((user) => user.id === userID);
+  }
 }
