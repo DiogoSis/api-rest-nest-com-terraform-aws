@@ -13,7 +13,7 @@ export class User {
   public readonly name: string;
   public readonly email: string;
   public readonly createdAt: Date;
-  public passsword: string;
+  public password: string;
   public updatedAt: Date;
 
   constructor(init: UserUpdate) {
