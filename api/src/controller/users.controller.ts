@@ -46,4 +46,6 @@ export class UsersController {
       updatedAt: userResult.updatedAt.toISOString(),
     });
   }
+
+  public async
 }
